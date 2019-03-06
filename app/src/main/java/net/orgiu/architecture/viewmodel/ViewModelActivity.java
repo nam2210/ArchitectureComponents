@@ -15,7 +15,8 @@ public class ViewModelActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        counterVM = ViewModelProviders.of(this).get(CounterViewModel.class);
+        CustomViewModelFactory factory = new CustomViewModelFactory(3);
+        counterVM = ViewModelProviders.of(this, factory).get(CounterViewModel.class);
         updateCounterValue(counterVM.getCounter());
     }
 
